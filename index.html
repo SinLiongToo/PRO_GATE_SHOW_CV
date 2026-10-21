@@ -904,23 +904,84 @@
 
                     <div class="svg-canvas bg-gradient-to-br from-indigo-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
                         <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="85" cy="68" r="48" stroke="#6366f1" stroke-opacity="0.35" stroke-width="1.5"/>
-                            <circle cx="109" cy="68" r="24" stroke="#6366f1" stroke-opacity="0.35" stroke-width="1.2"/>
-                            <path d="M37 68H133" stroke="#818cf8" stroke-width="1.5"/>
-                            <path d="M85 20C110 33 125 53 125 68" stroke="#818cf8" stroke-opacity="0.45" stroke-width="1.2"/>
+                            <!-- 1. Left: Smith Chart Impedance Grid & Matching Locus -->
+                            <g transform="translate(10, 10)">
+                                <circle cx="50" cy="55" r="45" stroke="#6366f1" stroke-opacity="0.35" stroke-width="1.4"/>
+                                <circle cx="72" cy="55" r="23" stroke="#6366f1" stroke-opacity="0.35" stroke-width="1"/>
+                                <line x1="5" y1="55" x2="95" y2="55" stroke="#818cf8" stroke-width="1.2"/>
+                                <path d="M50 10C75 22 90 40 90 55" stroke="#818cf8" stroke-opacity="0.45" stroke-width="1"/>
+                                <!-- Impedance Matching Trajectory -->
+                                <path d="M25 75Q60 25 85 55" stroke="#a5b4fc" stroke-width="2.2" stroke-linecap="round"/>
+                                <circle cx="85" cy="55" r="3.5" fill="#4f46e5" stroke="#c7d2fe" stroke-width="1.5"/>
+                                <text x="50" y="112" text-anchor="middle" fill="#a5b4fc" font-size="7" font-family="monospace">SMITH CHART (50Ω)</text>
+                            </g>
+
+                            <!-- Continuous Reference Wire from Smith Chart Locus to RF Front-End Matching -->
+                            <line x1="95" y1="65" x2="120" y2="65" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="3 3"/>
+                            <line x1="120" y1="38" x2="120" y2="80" stroke="#818cf8" stroke-width="1.8" stroke-dasharray="3 3"/>
+                            <circle cx="120" cy="65" r="2.5" fill="#818cf8"/>
+
+                            <!-- 2. Transmit Path (TX, Top): Driver -> PA -> TX Matching -> T/R Switch -->
+                            <!-- TX Input Terminal -->
+                            <circle cx="120" cy="38" r="3" fill="#6366f1" stroke="#818cf8" stroke-width="1.5"/>
+                            <text x="120" y="27" text-anchor="middle" fill="#a5b4fc" font-size="7" font-family="monospace">TX IN</text>
+                            <line x1="123" y1="38" x2="148" y2="38" stroke="#818cf8" stroke-width="2"/>
+
+                            <!-- Pre-Driver Stage -->
+                            <rect x="148" y="28" width="22" height="20" rx="3" fill="#4338ca" fill-opacity="0.3" stroke="#818cf8" stroke-width="1.3"/>
+                            <text x="159" y="41" text-anchor="middle" fill="#c7d2fe" font-size="6.5" font-family="monospace">DRV</text>
                             
-                            <path d="M60 88Q95 38 120 68" stroke="#a5b4fc" stroke-width="2.2" stroke-linecap="round"/>
-                            <circle cx="120" cy="68" r="3.5" fill="#4f46e5" stroke="#c7d2fe" stroke-width="1.5"/>
+                            <!-- Continuous Wire from Driver into PA -->
+                            <line x1="170" y1="38" x2="185" y2="38" stroke="#818cf8" stroke-width="2"/>
 
-                            <polygon points="170,38 170,78 205,58" fill="#4338ca" fill-opacity="0.4" stroke="#818cf8" stroke-width="1.8"/>
-                            <text x="183" y="61" text-anchor="middle" fill="#c7d2fe" font-size="7.5" font-weight="bold" font-family="monospace">LNA</text>
+                            <!-- Power Amplifier (PA) Symbol -->
+                            <polygon points="185,23 185,53 218,38" fill="#4338ca" fill-opacity="0.4" stroke="#818cf8" stroke-width="1.8"/>
+                            <text x="198" y="41" text-anchor="middle" fill="#c7d2fe" font-size="7.5" font-weight="bold" font-family="monospace">PA</text>
 
-                            <polygon points="230,58 230,98 265,78" fill="#4338ca" fill-opacity="0.4" stroke="#818cf8" stroke-width="1.8"/>
-                            <text x="243" y="81" text-anchor="middle" fill="#c7d2fe" font-size="7.5" font-weight="bold" font-family="monospace">PA</text>
+                            <!-- Continuous Wire from PA into TX Matching Inductor -->
+                            <line x1="218" y1="38" x2="235" y2="38" stroke="#818cf8" stroke-width="2"/>
+                            <path d="M235 38 C238 28 244 28 247 38 C250 28 256 28 259 38 C262 28 268 28 271 38" stroke="#818cf8" stroke-width="2.2" stroke-linecap="round"/>
+                            <text x="253" y="23" text-anchor="middle" fill="#818cf8" font-size="6.5" font-family="monospace">L-MATCH</text>
 
-                            <path d="M280 68C285 60 292 60 297 68C302 60 309 60 314 68C319 60 326 60 330 68" stroke="#818cf8" stroke-width="2.2" stroke-linecap="round"/>
-                            <text x="305" y="83" text-anchor="middle" fill="#818cf8" font-size="7" font-family="monospace">L-MATCH</text>
-                            <text x="220" y="24" text-anchor="middle" fill="#a5b4fc" font-size="8" font-family="monospace">CMOS RF SUITE</text>
+                            <!-- Wire from Matching directly into T/R Switch TX contact -->
+                            <line x1="271" y1="38" x2="295" y2="38" stroke="#818cf8" stroke-width="2"/>
+                            <line x1="295" y1="38" x2="295" y2="52" stroke="#818cf8" stroke-width="2"/>
+
+                            <!-- 3. T/R Switch & Antenna -->
+                            <rect x="285" y="52" width="22" height="32" rx="3" fill="#312e81" fill-opacity="0.5" stroke="#a5b4fc" stroke-width="1.3"/>
+                            <circle cx="295" cy="56" r="2" fill="#a5b4fc"/>
+                            <circle cx="295" cy="80" r="2" fill="#a5b4fc"/>
+                            <line x1="305" y1="68" x2="295" y2="58" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="305" cy="68" r="2.5" fill="#22d3ee"/>
+                            <text x="296" y="93" text-anchor="middle" fill="#a5b4fc" font-size="6" font-family="monospace">T/R</text>
+
+                            <!-- Wire from T/R Switch to Antenna Feed -->
+                            <line x1="307" y1="68" x2="330" y2="68" stroke="#22d3ee" stroke-width="2.2"/>
+                            <line x1="330" y1="68" x2="340" y2="68" stroke="#22d3ee" stroke-width="2"/>
+                            <line x1="340" y1="52" x2="340" y2="84" stroke="#22d3ee" stroke-width="2.2"/>
+                            <line x1="340" y1="68" x2="352" y2="52" stroke="#22d3ee" stroke-width="2"/>
+                            <line x1="340" y1="68" x2="352" y2="84" stroke="#22d3ee" stroke-width="2"/>
+                            <text x="340" y="96" text-anchor="middle" fill="#67e8f9" font-size="7" font-weight="bold" font-family="monospace">ANT</text>
+
+                            <!-- 4. Receive Path (RX, Bottom): T/R Switch -> RX Match -> LNA -> RX Out -->
+                            <line x1="295" y1="80" x2="275" y2="80" stroke="#818cf8" stroke-width="2"/>
+
+                            <!-- RX Input Inductor / Matching -->
+                            <path d="M275 80 C272 72 266 72 263 80 C260 72 254 72 251 80" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="251" y1="80" x2="235" y2="80" stroke="#818cf8" stroke-width="2"/>
+
+                            <!-- Low Noise Amplifier (LNA) Symbol pointing left -->
+                            <polygon points="235,65 235,95 202,80" fill="#4338ca" fill-opacity="0.4" stroke="#818cf8" stroke-width="1.8"/>
+                            <text x="222" y="83" text-anchor="middle" fill="#c7d2fe" font-size="7.5" font-weight="bold" font-family="monospace">LNA</text>
+
+                            <!-- Wire from LNA output to RX Mixer / Output -->
+                            <line x1="202" y1="80" x2="165" y2="80" stroke="#818cf8" stroke-width="2"/>
+                            <rect x="145" y="70" width="20" height="20" rx="3" fill="#4338ca" fill-opacity="0.3" stroke="#818cf8" stroke-width="1.3"/>
+                            <text x="155" y="83" text-anchor="middle" fill="#c7d2fe" font-size="6.5" font-family="monospace">MIX</text>
+
+                            <line x1="145" y1="80" x2="120" y2="80" stroke="#818cf8" stroke-width="2"/>
+                            <circle cx="120" cy="80" r="3" fill="#6366f1" stroke="#818cf8" stroke-width="1.5"/>
+                            <text x="120" y="95" text-anchor="middle" fill="#a5b4fc" font-size="7" font-family="monospace">RX OUT</text>
                         </svg>
                     </div>
 
@@ -1025,24 +1086,122 @@
 
                     <div class="svg-canvas bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
                         <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="25" y="42" width="45" height="30" rx="4" fill="#0284c7" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5"/>
-                            <text x="47" y="60" text-anchor="middle" fill="#7dd3fc" font-size="8" font-family="monospace">Vin</text>
-
-                            <line x1="70" y1="57" x2="95" y2="57" stroke="#38bdf8" stroke-width="1.8"/>
-                            <circle cx="100" cy="57" r="4" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <!-- Synchronous Buck Converter Circuit with 100% continuous electrical wiring -->
+                            <!-- 1. Common GND Rail across bottom -->
+                            <line x1="20" y1="116" x2="280" y2="116" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="16" y="119" text-anchor="end" fill="#7dd3fc" font-size="7" font-weight="bold" font-family="monospace">GND</text>
                             
-                            <path d="M115 57C118 47 126 47 129 57C132 47 140 47 143 57C146 47 154 47 157 57" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-                            <text x="136" y="71" text-anchor="middle" fill="#7dd3fc" font-size="7" font-family="monospace">L (INDUCTOR)</text>
+                            <!-- GND symbols -->
+                            <line x1="48" y1="116" x2="48" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="42" y1="124" x2="54" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="45" y1="127" x2="51" y2="127" stroke="#38bdf8" stroke-width="1.2"/>
+                            
+                            <line x1="126" y1="116" x2="126" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="120" y1="124" x2="132" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="123" y1="127" x2="129" y2="127" stroke="#38bdf8" stroke-width="1.2"/>
 
-                            <line x1="165" y1="57" x2="200" y2="57" stroke="#38bdf8" stroke-width="1.8"/>
-                            <rect x="200" y="42" width="50" height="30" rx="4" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5"/>
-                            <text x="225" y="60" text-anchor="middle" fill="#bae6fd" font-size="8" font-family="monospace">Vout (Reg)</text>
+                            <line x1="225" y1="116" x2="225" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="219" y1="124" x2="231" y2="124" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="222" y1="127" x2="228" y2="127" stroke="#38bdf8" stroke-width="1.2"/>
 
-                            <g transform="translate(265, 25)">
-                                <rect x="0" y="0" width="80" height="70" rx="6" fill="#082f49" fill-opacity="0.5" stroke="#0284c7" stroke-width="1.2"/>
-                                <path d="M10 50L25 20L40 50L55 20L70 50" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M10 35H70" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="2 2"/>
-                                <text x="40" y="64" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-family="monospace">PWM RIPPLE</text>
+                            <!-- 2. Vin Input Port & Cin Input Filter -->
+                            <circle cx="22" cy="38" r="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="22" y="27" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="bold" font-family="monospace">VIN</text>
+                            
+                            <!-- Trace Vin to Cin Junction -->
+                            <line x1="25" y1="38" x2="48" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            <circle cx="48" cy="38" r="2.5" fill="#38bdf8"/>
+
+                            <!-- Cin Capacitor Shunt Branch to GND -->
+                            <line x1="48" y1="38" x2="48" y2="60" stroke="#38bdf8" stroke-width="1.8"/>
+                            <line x1="40" y1="60" x2="56" y2="60" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="40" y1="66" x2="56" y2="66" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="48" y1="66" x2="48" y2="116" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="59" y="65" text-anchor="start" fill="#7dd3fc" font-size="6.5" font-family="monospace">CIN</text>
+
+                            <!-- Trace from Cin to High-Side FET Q1 -->
+                            <line x1="48" y1="38" x2="72" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            
+                            <!-- HS-FET Q1 (Synchronous High Side) -->
+                            <rect x="72" y="26" width="34" height="24" rx="3" fill="#0284c7" fill-opacity="0.35" stroke="#38bdf8" stroke-width="1.4"/>
+                            <text x="89" y="41" text-anchor="middle" fill="#bae6fd" font-size="7" font-weight="bold" font-family="monospace">HS-FET</text>
+
+                            <!-- Trace from HS-FET Q1 to SW Node -->
+                            <line x1="106" y1="38" x2="126" y2="38" stroke="#38bdf8" stroke-width="2"/>
+
+                            <!-- SW Node Junction -->
+                            <circle cx="126" cy="38" r="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="126" y="25" text-anchor="middle" fill="#38bdf8" font-size="7" font-weight="bold" font-family="monospace">SW NODE</text>
+
+                            <!-- Branch from SW Node down to LS-FET Q2 (Low Side Synchronous Rectifier) -->
+                            <line x1="126" y1="38" x2="126" y2="58" stroke="#38bdf8" stroke-width="2"/>
+                            <rect x="109" y="58" width="34" height="24" rx="3" fill="#0284c7" fill-opacity="0.35" stroke="#38bdf8" stroke-width="1.4"/>
+                            <text x="126" y="73" text-anchor="middle" fill="#bae6fd" font-size="7" font-weight="bold" font-family="monospace">LS-FET</text>
+                            
+                            <!-- Trace from LS-FET down to GND Rail -->
+                            <line x1="126" y1="82" x2="126" y2="116" stroke="#38bdf8" stroke-width="2"/>
+
+                            <!-- Continuous Trace from SW Node into Power Inductor L -->
+                            <line x1="126" y1="38" x2="148" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            <!-- Power Inductor Coils -->
+                            <path d="M148 38 C151 26 157 26 160 38 C163 26 169 26 172 38 C175 26 181 26 184 38 C187 26 193 26 196 38" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round"/>
+                            <text x="172" y="52" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-family="monospace">L1 (2.2μH)</text>
+
+                            <!-- Trace from Inductor to Output Node & Cout -->
+                            <line x1="196" y1="38" x2="225" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            <circle cx="225" cy="38" r="2.5" fill="#38bdf8"/>
+
+                            <!-- Cout Output Filter Capacitor Shunt Branch to GND -->
+                            <line x1="225" y1="38" x2="225" y2="60" stroke="#38bdf8" stroke-width="1.8"/>
+                            <line x1="217" y1="60" x2="233" y2="60" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="217" y1="66" x2="233" y2="66" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="225" y1="66" x2="225" y2="116" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="236" y="65" text-anchor="start" fill="#7dd3fc" font-size="6.5" font-family="monospace">COUT</text>
+
+                            <!-- Trace from Cout to Vout Terminal -->
+                            <line x1="225" y1="38" x2="255" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            <circle cx="255" cy="38" r="2.5" fill="#38bdf8"/>
+                            <line x1="255" y1="38" x2="278" y2="38" stroke="#38bdf8" stroke-width="2"/>
+                            <circle cx="278" cy="38" r="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="278" y="25" text-anchor="middle" fill="#bae6fd" font-size="7" font-weight="bold" font-family="monospace">VOUT</text>
+
+                            <!-- Continuous Output Connection into Waveform Monitor -->
+                            <line x1="278" y1="38" x2="296" y2="38" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="2 2"/>
+
+                            <!-- Closed Feedback Loop (Vfb) from Vout back to PWM Controller -->
+                            <line x1="255" y1="38" x2="255" y2="98" stroke="#38bdf8" stroke-width="1.8"/>
+                            <line x1="255" y1="98" x2="220" y2="98" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="238" y="108" text-anchor="middle" fill="#7dd3fc" font-size="6" font-family="monospace">VFB</text>
+
+                            <!-- PWM Controller / Error Amplifier IC Block -->
+                            <rect x="150" y="84" width="70" height="26" rx="3" fill="#082f49" fill-opacity="0.6" stroke="#38bdf8" stroke-width="1.3"/>
+                            <text x="185" y="96" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">PWM / EA</text>
+                            <text x="185" y="105" text-anchor="middle" fill="#38bdf8" font-size="5.5" font-family="monospace">CONTROLLER</text>
+
+                            <!-- Gate Drive Signal Trace back to HS Gate -->
+                            <path d="M150 93 H89 V50" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="2 2"/>
+                            <circle cx="89" cy="50" r="1.5" fill="#f59e0b"/>
+
+                            <!-- Gate Drive Signal Trace back to LS Gate -->
+                            <line x1="150" y1="102" x2="143" y2="102" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="2 2"/>
+                            <line x1="143" y1="102" x2="143" y2="70" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="2 2"/>
+
+                            <!-- Right Side: Real-time Switching Waveform Monitor (Vsw & Ripple) -->
+                            <g transform="translate(296, 20)">
+                                <rect x="0" y="0" width="56" height="96" rx="4" fill="#082f49" fill-opacity="0.5" stroke="#0284c7" stroke-width="1.2"/>
+                                <text x="28" y="14" text-anchor="middle" fill="#7dd3fc" font-size="6" font-weight="bold" font-family="monospace">SW &amp; IL</text>
+                                
+                                <!-- Switching Square Wave (Vsw) -->
+                                <path d="M6 34 H16 V22 H28 V34 H40 V22 H50" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
+                                <text x="28" y="44" text-anchor="middle" fill="#38bdf8" font-size="5.5" font-family="monospace">VSW WAVE</text>
+
+                                <!-- Triangular Inductor Current (IL Ripple) -->
+                                <path d="M6 68 L17 56 L28 68 L39 56 L50 68" stroke="#f59e0b" stroke-width="1.4" stroke-linecap="round"/>
+                                <text x="28" y="78" text-anchor="middle" fill="#f59e0b" font-size="5.5" font-family="monospace">ΔIL RIPPLE</text>
+
+                                <!-- Efficiency tag -->
+                                <rect x="6" y="82" width="44" height="10" rx="2" fill="#0369a1" fill-opacity="0.4"/>
+                                <text x="28" y="90" text-anchor="middle" fill="#bae6fd" font-size="5.5" font-weight="bold" font-family="monospace">η &gt; 94%</text>
                             </g>
                         </svg>
                     </div>
