@@ -1,8 +1,26 @@
 # Masa Hsin-Lung Tu | Professional Engineering & Innovation Portal
 ## 跨界工程・精實六標準差・AI 實務專業入口網頁
 
+🌐 **線上公開入口網頁 (GitHub Pages)**: [https://sinliongtoo.github.io/PRO_GATE_SHOW_CV/](https://sinliongtoo.github.io/PRO_GATE_SHOW_CV/)
+
 本專案為 **杜信龍 (Masa Hsin-Lung Tu)** 的個人全方位專業入口網頁 (Landing Portal Hub)。
 整合格域 20+ 年半導體/射頻/NPI 工程、精實六標準差黑帶 (Black Belt Lean Expert)、極限超馬越野與文學創作，以及前線 AI 系統工程 (FDE) 之 11 大核心專屬平台。
+
+---
+
+## 🎨 介面與功能特色
+
+1. **置頂固定搜尋與內容分類圖示 (Fixed Top Find & Category Icons)**：
+   - 搜尋框與五大分類標籤（🌟 全部、📋 履歷精實、⚡ 元件電路、🔬 測試良率、🤖 AI 自動化）固定於頂部導航列，隨頁面滾動常駐，隨時隨地 1-Click 切換與即時篩選。
+2. **零遮擋獨立卡片標題列 (Zero Overlap Layout)**：
+   - 解決標籤遮擋圖形問題，將主題分類徽章獨立置於卡片頂部標題列，SVG 圖形畫布 100% 獨立清晰呈現。
+3. **一看就懂的專屬主題視覺圖**：
+   - 為 11 個卡片量身打造高解析度向量圖形（如 77 GHz 雷達 FMCW 波束、MOSFET 載子傳導、史密斯圖、3D NAND、Buck 拓撲、CP/FT/SLT 測試管線、晶圓缺陷 Pareto 圖、DMAIC 鐘型分佈、Agent 狀態機等）。
+4. **雙主題與雙語切換**：
+   - `🌙 / ☀️` 深淺主題自由切換。
+   - `🌐 繁中 / EN` 雙語即時翻譯切換。
+5. **一鍵開啟與網址複製**：
+   - 提供「開啟站台」外開分頁與「📋 複製網址」剪貼簿回饋通知。
 
 ---
 
