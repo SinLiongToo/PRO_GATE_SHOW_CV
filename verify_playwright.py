@@ -72,13 +72,22 @@ def run_verification():
         page.fill("#searchInput", "")
         page.wait_for_timeout(200)
 
-        # 4. Test Theme Toggle
-        print("\n--- 4. Testing Theme Toggle ---")
+        # 4. Test Theme Toggle & Light Mode Contrast
+        print("\n--- 4. Testing Theme Toggle & Light Mode Contrast ---")
         page.click("#themeToggleBtn")
         page.wait_for_timeout(200)
         is_light = page.evaluate("document.documentElement.classList.contains('light')")
         print(f"Theme toggled to light: {is_light}")
         assert is_light, "Expected light theme"
+
+        # Verify high contrast colors in light mode
+        desc_color = page.locator('article p').first.evaluate('el => window.getComputedStyle(el).color')
+        title_color = page.locator('article h3').first.evaluate('el => window.getComputedStyle(el).color')
+        print(f"Light Mode Title Color: {title_color} (Expected dark slate #0f172a)")
+        print(f"Light Mode Description Color: {desc_color} (Expected high contrast #334155)")
+        assert desc_color == "rgb(51, 65, 85)", f"Expected rgb(51, 65, 85), got {desc_color}"
+        assert title_color == "rgb(15, 23, 42)", f"Expected rgb(15, 23, 42), got {title_color}"
+        page.screenshot(path="playwright_light_mode.png", full_page=True)
 
         # Switch back to dark theme
         page.click("#themeToggleBtn")

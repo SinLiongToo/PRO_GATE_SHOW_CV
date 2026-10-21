@@ -66,8 +66,210 @@
             --card-hover-border: #0284c7;
             --border-color: #e2e8f0;
             --text-primary: #0f172a;
-            --text-secondary: #475569;
+            --text-secondary: #334155;
             --tag-bg: #f1f5f9;
+        }
+
+        /* ============================================================== */
+        /* LIGHT MODE HIGH-CONTRAST TYPOGRAPHY & SURFACE ENHANCEMENTS     */
+        /* ============================================================== */
+        html.light .text-slate-100 {
+            color: #0f172a !important; /* Deepest readable slate */
+        }
+        html.light .text-slate-200 {
+            color: #1e293b !important;
+        }
+        html.light .text-slate-300 {
+            color: #334155 !important; /* High contrast charcoal */
+        }
+        html.light .text-slate-400 {
+            color: #334155 !important; /* Transform washed-out grey to rich dark slate (WCAG AAA) */
+        }
+        html.light .text-slate-500 {
+            color: #475569 !important; /* Crisp readable metadata */
+        }
+
+        /* Input and Controls in Light Mode */
+        html.light input#searchInput {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+        }
+        html.light input#searchInput::placeholder {
+            color: #64748b !important;
+        }
+
+        /* Header and Navigation in Light Mode */
+        html.light header.glass-panel {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom-color: #e2e8f0 !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+        html.light header .border-t {
+            border-top-color: #e2e8f0 !important;
+            background-color: #f8fafc !important;
+        }
+        html.light #themeToggleBtn,
+        html.light #langToggleBtn,
+        html.light header a[href*="github.com"] {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        html.light #themeToggleBtn:hover,
+        html.light #langToggleBtn:hover,
+        html.light header a[href*="github.com"]:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            border-color: #94a3b8 !important;
+        }
+
+        /* Unselected Filter Buttons in Light Mode */
+        html.light .filter-btn:not(.active) {
+            background-color: #ffffff !important;
+            color: #334155 !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+        }
+        html.light .filter-btn:not(.active):hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            border-color: #94a3b8 !important;
+        }
+
+        /* Cards in Light Mode */
+        html.light .portal-card {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+        }
+        html.light .portal-card:hover {
+            border-color: #0284c7 !important;
+            box-shadow: 0 12px 24px -6px rgba(2, 132, 199, 0.16) !important;
+        }
+
+        /* Card Header Bars in Light Mode */
+        html.light .portal-card > div:first-child {
+            background-color: #f8fafc !important;
+            border-bottom-color: #e2e8f0 !important;
+        }
+
+        /* Card Bottom Action Bar in Light Mode */
+        html.light .portal-card .border-t {
+            border-top-color: #e2e8f0 !important;
+        }
+        html.light .portal-card button[onclick*="copyToClipboard"] {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        html.light .portal-card button[onclick*="copyToClipboard"]:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            border-color: #94a3b8 !important;
+        }
+
+        /* SVG Canvas in Light Mode */
+        html.light .svg-canvas {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border-bottom-color: #e2e8f0 !important;
+        }
+
+        /* Badges in Light Mode */
+        html.light .badge-pill.bg-emerald-950 {
+            background-color: #ecfdf5 !important;
+            color: #047857 !important;
+            border-color: #a7f3d0 !important;
+        }
+        html.light .badge-pill.bg-teal-950 {
+            background-color: #f0fdfa !important;
+            color: #0f766e !important;
+            border-color: #99f6e4 !important;
+        }
+        html.light .badge-pill.bg-sky-950 {
+            background-color: #f0f9ff !important;
+            color: #0369a1 !important;
+            border-color: #bae6fd !important;
+        }
+        html.light .badge-pill.bg-blue-950 {
+            background-color: #eff6ff !important;
+            color: #1d4ed8 !important;
+            border-color: #bfdbfe !important;
+        }
+        html.light .badge-pill.bg-indigo-950 {
+            background-color: #eef2ff !important;
+            color: #4338ca !important;
+            border-color: #c7d2fe !important;
+        }
+        html.light .badge-pill.bg-cyan-950 {
+            background-color: #ecfeff !important;
+            color: #0e7490 !important;
+            border-color: #a5f3fc !important;
+        }
+        html.light .badge-pill.bg-amber-950 {
+            background-color: #fffbeb !important;
+            color: #b45309 !important;
+            border-color: #fde68a !important;
+        }
+        html.light .badge-pill.bg-purple-950 {
+            background-color: #faf5ff !important;
+            color: #6b21a8 !important;
+            border-color: #e9d5ff !important;
+        }
+
+        /* Category Section Headings in Light Mode */
+        html.light .category-block .border-b {
+            border-bottom-color: #e2e8f0 !important;
+        }
+
+        /* Ensure SVG text and diagram elements have clear contrast in Light Mode */
+        html.light svg text {
+            fill: #1e293b;
+            font-weight: 600;
+        }
+        html.light svg text[fill*="#6ee7b7"],
+        html.light svg text[fill*="#a7f3d0"],
+        html.light svg text[fill*="#5eead4"] {
+            fill: #065f46 !important; /* Deep emerald */
+        }
+        html.light svg text[fill*="#7dd3fc"],
+        html.light svg text[fill*="#bfdbfe"],
+        html.light svg text[fill*="#60a5fa"],
+        html.light svg text[fill*="#93c5fd"],
+        html.light svg text[fill*="#67e8f9"],
+        html.light svg text[fill*="#a5f3fc"],
+        html.light svg text[fill*="#bae6fd"] {
+            fill: #0369a1 !important; /* Deep ocean blue */
+        }
+        html.light svg text[fill*="#fde68a"],
+        html.light svg text[fill*="#fef3c7"] {
+            fill: #92400e !important; /* Deep amber */
+        }
+        html.light svg text[fill*="#c7d2fe"],
+        html.light svg text[fill*="#a5b4fc"],
+        html.light svg text[fill*="#e9d5ff"],
+        html.light svg text[fill*="#d8b4fe"],
+        html.light svg text[fill*="#f3e8ff"] {
+            fill: #5b21b6 !important; /* Deep purple / indigo */
+        }
+        html.light svg rect[fill="#0f172a"] {
+            fill: #e2e8f0 !important;
+            stroke: #94a3b8 !important;
+        }
+        html.light svg circle[fill="#1e293b"] {
+            fill: #f1f5f9 !important;
+        }
+
+        /* Footer in Light Mode */
+        html.light footer.glass-panel {
+            background-color: #ffffff !important;
+            border-top-color: #e2e8f0 !important;
+        }
+        html.light footer span, html.light footer a {
+            color: #475569 !important;
+        }
+        html.light footer a:hover {
+            color: #0284c7 !important;
         }
 
         body {
