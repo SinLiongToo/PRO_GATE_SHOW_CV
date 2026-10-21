@@ -57,9 +57,11 @@
 
 ---
 
-### 三、Other Expertise | AI ML | Automation
+### 三、Other Expertise | AI ML | Automation | Strategic OpEx
 11. **[AI 工程實戰課：給前線部署工程師 (FDE)](https://sinliongtoo.github.io/fde-ai-engineering/)**  
    - 專為技術前線量身打造的軟體工程手冊：涵蓋規格驅動開發 (Spec-Driven with Pydantic)、LangGraph 耐久狀態機 Agent、PostgreSQL pgvector 雙階段混合檢索 (Hybrid RAG) 與自動化 CI/CD 評測關卡。
+12. **[財務與 OpEx 策略對齊儀表板 (Financial & OpEx Strategic Alignment Dashboard)](https://sinliongtoo.github.io/financialreport_comparsion/)**  
+   - 全球半導體與科技巨頭財報 (10-K / 20-F) 爬蟲解析、CapEx / OpEx 研發投入強度對比、毛利率成長動能與跨產業資本配置策略儀表板。
 
 ---
 
