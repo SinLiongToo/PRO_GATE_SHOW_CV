@@ -317,9 +317,12 @@
         }
         html.light svg path[stroke="#22d3ee"],
         html.light svg line[stroke="#22d3ee"],
+        html.light svg path[stroke="#06b6d4"],
+        html.light svg line[stroke="#06b6d4"],
         html.light svg path[stroke="#0891b2"],
         html.light svg line[stroke="#0891b2"] {
             stroke: #0891b2 !important;
+            stroke-width: 2.2 !important;
         }
         html.light svg path[stroke="#f59e0b"],
         html.light svg line[stroke="#f59e0b"],
@@ -590,23 +593,43 @@
 
                     <div class="svg-canvas bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
                         <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 35H360 M0 70H360 M0 105H360" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="4 4" />
-                            <path d="M60 0V135 M120 0V135 M180 0V135 M240 0V135 M300 0V135" stroke="#10b981" stroke-opacity="0.2" stroke-dasharray="4 4" />
+                            <!-- Background Subtle Grid -->
+                            <path d="M0 32H360 M0 68H360 M0 104H360" stroke="#10b981" stroke-opacity="0.1" stroke-dasharray="4 4" />
+                            <path d="M72 0V135 M165 0V135 M270 0V135" stroke="#10b981" stroke-opacity="0.1" stroke-dasharray="4 4" />
                             
-                            <rect x="25" y="25" width="75" height="85" rx="10" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="1.8"/>
-                            <circle cx="62" cy="55" r="14" fill="#34d399" fill-opacity="0.25" stroke="#34d399" stroke-width="1.8"/>
-                            <path d="M44 88C44 78 52 75 62 75C72 75 80 78 80 88" stroke="#34d399" stroke-width="1.8" stroke-linecap="round"/>
-                            <text x="62" y="100" text-anchor="middle" fill="#6ee7b7" font-size="7.5" font-family="monospace">MASA TU</text>
+                            <!-- Profile ID Card (Masa Tu Tri-Domain Origin) -->
+                            <rect x="12" y="20" width="60" height="95" rx="7" fill="#064e3b" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5"/>
+                            <circle cx="42" cy="46" r="12" fill="#34d399" fill-opacity="0.25" stroke="#34d399" stroke-width="1.6"/>
+                            <path d="M30 71C30 64 36 62 42 62C48 62 54 64 54 71" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"/>
+                            <text x="42" y="86" text-anchor="middle" fill="#6ee7b7" font-size="7.5" font-weight="bold" font-family="monospace">MASA TU</text>
+                            <text x="42" y="97" text-anchor="middle" fill="#34d399" font-size="6" font-family="monospace">3 DOMAINS</text>
 
-                            <path d="M100 68C130 68 140 38 180 38C220 38 230 95 270 95C290 95 310 68 335 68" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
-                            
-                            <circle cx="180" cy="38" r="5" fill="#10b981" stroke="#064e3b" stroke-width="2"/>
-                            <text x="180" y="25" text-anchor="middle" fill="#a7f3d0" font-size="8" font-family="monospace">20+ YRS SEMI</text>
+                            <!-- Hub Origin Interconnect Node -->
+                            <circle cx="72" cy="68" r="4" fill="#10b981" stroke="#064e3b" stroke-width="2"/>
 
-                            <circle cx="270" cy="95" r="5" fill="#34d399" stroke="#064e3b" stroke-width="2"/>
-                            <text x="270" y="115" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">LITERATURE & ULTRA</text>
+                            <!-- 1. Curve: SEMICONDUCTOR (Top, Green) -->
+                            <path d="M72 68 C105 68 125 32 165 32 C205 32 230 24 270 24 C305 24 330 30 348 30" stroke="#10b981" stroke-width="2.6" stroke-linecap="round"/>
+                            <circle cx="165" cy="32" r="3.8" fill="#10b981" stroke="#064e3b" stroke-width="1.5"/>
+                            <circle cx="270" cy="24" r="3.8" fill="#34d399" stroke="#064e3b" stroke-width="1.5"/>
+                            <circle cx="348" cy="30" r="3" fill="#10b981"/>
+                            <text x="165" y="21" text-anchor="middle" fill="#6ee7b7" font-size="7" font-weight="bold" font-family="monospace">SEMICONDUCTOR</text>
+                            <text x="270" y="14" text-anchor="middle" fill="#a7f3d0" font-size="7" font-weight="bold" font-family="monospace">20+ YRS IC/RF/NPI</text>
 
-                            <circle cx="335" cy="68" r="5" fill="#059669" stroke="#34d399" stroke-width="2"/>
+                            <!-- 2. Curve: LITERATURE (Middle, Golden Amber) -->
+                            <path d="M72 68 C105 68 125 64 165 64 C205 64 230 70 270 70 C305 70 330 68 348 68" stroke="#f59e0b" stroke-width="2.6" stroke-linecap="round"/>
+                            <circle cx="165" cy="64" r="3.8" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/>
+                            <circle cx="270" cy="70" r="3.8" fill="#fbbf24" stroke="#78350f" stroke-width="1.5"/>
+                            <circle cx="348" cy="68" r="3" fill="#f59e0b"/>
+                            <text x="165" y="53" text-anchor="middle" fill="#fde68a" font-size="7" font-weight="bold" font-family="monospace">LITERATURE</text>
+                            <text x="270" y="84" text-anchor="middle" fill="#fbbf24" font-size="7" font-weight="bold" font-family="monospace">GOLDEN AWARD POET</text>
+
+                            <!-- 3. Curve: ULTRA (Bottom, Cyan/Sky Blue) -->
+                            <path d="M72 68 C105 68 125 104 165 104 C205 104 230 108 270 108 C305 108 330 104 348 104" stroke="#06b6d4" stroke-width="2.6" stroke-linecap="round"/>
+                            <circle cx="165" cy="104" r="3.8" fill="#06b6d4" stroke="#164e63" stroke-width="1.5"/>
+                            <circle cx="270" cy="108" r="3.8" fill="#22d3ee" stroke="#164e63" stroke-width="1.5"/>
+                            <circle cx="348" cy="104" r="3" fill="#06b6d4"/>
+                            <text x="165" y="118" text-anchor="middle" fill="#67e8f9" font-size="7" font-weight="bold" font-family="monospace">ULTRA MARATHON</text>
+                            <text x="270" y="122" text-anchor="middle" fill="#a5f3fc" font-size="7" font-weight="bold" font-family="monospace">85+ RACES &amp; TRAILS</text>
                         </svg>
                     </div>
 
