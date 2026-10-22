@@ -488,7 +488,7 @@
                         placeholder="搜尋 (Radar, PMIC, Yield, OpEx, FDE...)" 
                         data-i18n-ph="search-placeholder">
                     <div class="absolute inset-y-0 right-1.5 flex items-center">
-                        <span id="resultCountBadge" class="text-[11px] px-2 py-0.5 rounded-lg bg-sky-500/20 text-sky-300 font-mono font-medium">12 項</span>
+                        <span id="resultCountBadge" class="text-[11px] px-2 py-0.5 rounded-lg bg-sky-500/20 text-sky-300 font-mono font-medium">13 項</span>
                     </div>
                 </div>
             </div>
@@ -790,7 +790,7 @@
                         <p class="text-xs text-slate-400" data-i18n="sec2a-sub">半導體元件物理、射頻/類比電路、77GHz 雷達 SOC、記憶體與電源管理晶片</p>
                     </div>
                 </div>
-                <span class="text-xs text-slate-500 font-mono">5 Portals</span>
+                <span class="text-xs text-slate-500 font-mono">6 Portals</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1254,6 +1254,132 @@
                     </div>
                 </article>
 
+                <!-- Card 9: MCU Notes -->
+                <article class="portal-card rounded-2xl overflow-hidden flex flex-col group" data-tags="mcu notes pmic ev automotive bms ibs arm cortex m0 adc delta sigma afe iso 26262 asil-c lin can infineon psoc 車用 微控制器 電池管理 類比前端">
+                    <div class="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between">
+                        <span class="badge-pill bg-blue-950 text-blue-400 border border-blue-800/60 font-mono text-[11px]" data-i18n="tag-dev6">
+                            車用微控 · 類比前端 AFE
+                        </span>
+                        <span class="text-[11px] font-mono text-blue-300 bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded-md font-semibold">
+                            MCU NOTES
+                        </span>
+                    </div>
+
+                    <div class="svg-canvas bg-gradient-to-br from-blue-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <path d="M0 34H360 M0 68H360 M0 102H360" stroke="#3b82f6" stroke-opacity="0.1" stroke-dasharray="4 4" />
+                            <path d="M82 0V135 M262 0V135" stroke="#3b82f6" stroke-opacity="0.1" stroke-dasharray="4 4" />
+
+                            <!-- 1. Left: Battery Terminal & Kelvin Shunt Input (BMS) -->
+                            <!-- VBAT Terminal (12V/42V) -->
+                            <circle cx="20" cy="30" r="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="20" y="21" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">VBAT (42V)</text>
+                            
+                            <!-- 42V Direct PMIC Line into MCU -->
+                            <line x1="23" y1="30" x2="82" y2="30" stroke="#38bdf8" stroke-width="2"/>
+                            <text x="52" y="26" text-anchor="middle" fill="#38bdf8" font-size="5" font-family="monospace">42V LINE</text>
+
+                            <!-- Shunt Resistor RSENSE with Kelvin taps -->
+                            <rect x="14" y="66" width="34" height="20" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+                            <text x="31" y="76" text-anchor="middle" fill="#bae6fd" font-size="5.5" font-weight="bold" font-family="monospace">RSENSE</text>
+                            <text x="31" y="83" text-anchor="middle" fill="#7dd3fc" font-size="5" font-family="monospace">100μΩ</text>
+
+                            <!-- Kelvin Sense Differential Pair into ΔΣ ADC -->
+                            <line x1="48" y1="71" x2="82" y2="71" stroke="#22d3ee" stroke-width="1.6"/>
+                            <circle cx="48" cy="71" r="1.5" fill="#22d3ee"/>
+                            <text x="65" y="67" text-anchor="middle" fill="#22d3ee" font-size="5" font-family="monospace">VIN+</text>
+
+                            <line x1="48" y1="81" x2="82" y2="81" stroke="#22d3ee" stroke-width="1.6"/>
+                            <circle cx="48" cy="81" r="1.5" fill="#22d3ee"/>
+                            <text x="65" y="89" text-anchor="middle" fill="#22d3ee" font-size="5" font-family="monospace">VIN-</text>
+
+                            <!-- Ground rail tap -->
+                            <line x1="31" y1="86" x2="31" y2="114" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="25" y1="114" x2="37" y2="114" stroke="#38bdf8" stroke-width="1.5"/>
+                            <line x1="28" y1="117" x2="34" y2="117" stroke="#38bdf8" stroke-width="1.2"/>
+                            <text x="31" y="125" text-anchor="middle" fill="#7dd3fc" font-size="5" font-family="monospace">GND</text>
+
+                            <!-- 2. Center: Automotive MCU SoC (PSoC 4 HVPA Architecture) -->
+                            <rect x="82" y="14" width="180" height="106" rx="6" fill="#0f172a" fill-opacity="0.9" stroke="#38bdf8" stroke-width="1.6"/>
+                            <text x="172" y="26" text-anchor="middle" fill="#7dd3fc" font-size="7" font-weight="bold" font-family="monospace">PSoC 4 HVPA · AUTO MCU SoC</text>
+
+                            <!-- Internal PMIC (42V Direct / LDO) -->
+                            <rect x="90" y="32" width="74" height="28" rx="3" fill="#0369a1" fill-opacity="0.35" stroke="#0284c7" stroke-width="1.2"/>
+                            <text x="127" y="44" text-anchor="middle" fill="#bae6fd" font-size="6.5" font-weight="bold" font-family="monospace">42V PMIC / LDO</text>
+                            <text x="127" y="53" text-anchor="middle" fill="#7dd3fc" font-size="5.5" font-family="monospace">40V LOAD DUMP</text>
+
+                            <!-- Internal Dual-Channel 16-bit ΔΣ ADC (Precision AFE) -->
+                            <rect x="90" y="66" width="74" height="46" rx="3" fill="#082f49" fill-opacity="0.5" stroke="#38bdf8" stroke-width="1.2"/>
+                            <text x="127" y="78" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">16-bit ΔΣ ADC</text>
+                            <text x="127" y="88" text-anchor="middle" fill="#38bdf8" font-size="5.5" font-family="monospace">CHOPPER PGA AFE</text>
+                            <rect x="98" y="94" width="58" height="12" rx="2" fill="#065f46" fill-opacity="0.6"/>
+                            <text x="127" y="103" text-anchor="middle" fill="#34d399" font-size="5.5" font-weight="bold" font-family="monospace">μV RESOLUTION</text>
+
+                            <!-- Arm Cortex-M0+ Subsystem -->
+                            <rect x="174" y="32" width="80" height="42" rx="3" fill="#1e3a8a" fill-opacity="0.45" stroke="#60a5fa" stroke-width="1.2"/>
+                            <text x="214" y="45" text-anchor="middle" fill="#bfdbfe" font-size="7" font-weight="bold" font-family="monospace">Arm Cortex-M0+</text>
+                            <text x="214" y="56" text-anchor="middle" fill="#93c5fd" font-size="5.5" font-family="monospace">48MHz · NVIC · DMA</text>
+                            <text x="214" y="67" text-anchor="middle" fill="#60a5fa" font-size="5.5" font-family="monospace">FLASH / SRAM ECC</text>
+
+                            <!-- ISO 26262 ASIL-C & LIN/CAN Controller -->
+                            <rect x="174" y="80" width="80" height="32" rx="3" fill="#312e81" fill-opacity="0.5" stroke="#818cf8" stroke-width="1.2"/>
+                            <text x="214" y="92" text-anchor="middle" fill="#c7d2fe" font-size="6.5" font-weight="bold" font-family="monospace">ISO 26262 ASIL-C</text>
+                            <text x="214" y="103" text-anchor="middle" fill="#a5b4fc" font-size="5.5" font-family="monospace">LIN 2.2A / CAN-FD</text>
+
+                            <!-- Internal AHB-Lite Interconnect Bus -->
+                            <line x1="164" y1="84" x2="174" y2="84" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="164" y1="46" x2="174" y2="46" stroke="#60a5fa" stroke-width="2"/>
+
+                            <!-- 3. Right: In-Vehicle Battery Telemetry & LIN Output -->
+                            <line x1="254" y1="96" x2="276" y2="96" stroke="#818cf8" stroke-width="2"/>
+                            <circle cx="276" cy="96" r="2" fill="#818cf8"/>
+
+                            <g transform="translate(276, 20)">
+                                <rect x="0" y="0" width="74" height="96" rx="5" fill="#082f49" fill-opacity="0.5" stroke="#0284c7" stroke-width="1.2"/>
+                                <text x="37" y="14" text-anchor="middle" fill="#7dd3fc" font-size="6" font-weight="bold" font-family="monospace">BMS TELEMETRY</text>
+
+                                <!-- Battery State of Charge (SoC) Bar -->
+                                <rect x="6" y="22" width="62" height="12" rx="2" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+                                <rect x="8" y="24" width="52" height="8" rx="1.5" fill="#10b981"/>
+                                <text x="37" y="44" text-anchor="middle" fill="#34d399" font-size="5.5" font-weight="bold" font-family="monospace">SoC: 98.4% (Ah)</text>
+
+                                <!-- Precision Shunt Voltage Ripple -->
+                                <path d="M6 58 Q16 52 26 58 T46 58 T66 58" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
+                                <text x="37" y="68" text-anchor="middle" fill="#f59e0b" font-size="5.5" font-family="monospace">VSHUNT: 12.4mV</text>
+
+                                <!-- In-Vehicle LIN Network Message Tag -->
+                                <rect x="6" y="76" width="62" height="12" rx="2" fill="#1e3a8a" fill-opacity="0.6"/>
+                                <text x="37" y="85" text-anchor="middle" fill="#bfdbfe" font-size="5" font-family="monospace">LIN 2.2A SYNC OK</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-100 group-hover:text-blue-400 transition-colors" data-i18n="title-dev6">
+                                MCU Notes · 車用與高精度類比 MCU 知識地圖
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="desc-dev6">
+                                車用微控制器與高精度類比 PMIC 整合：Arm Cortex-M 微架構、雙通道 16-bit ΔΣ ADC 類比前端 (AFE)、車用電池管理 (BMS/IBS) 與 ISO 26262 ASIL-C 功能安全。
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-slate-500">MCU_PMIC_EV</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyToClipboard('https://sinliongtoo.github.io/MCU_PMIC_EV/index.html', this)" class="p-1.5 rounded-lg border border-slate-700/60 hover:border-slate-500 text-slate-400 hover:text-white text-xs transition-colors" title="複製連結 / Copy URL">
+                                    📋
+                                </button>
+                                <a href="https://sinliongtoo.github.io/MCU_PMIC_EV/index.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all">
+                                    <span data-i18n="btn-open">開啟站台</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -1614,7 +1740,7 @@
                     github.com/SinLiongToo
                 </a>
                 <span>•</span>
-                <span class="text-emerald-400">● 12 Portals Active</span>
+                <span class="text-emerald-400">● 13 Portals Active</span>
             </div>
         </div>
     </footer>
@@ -1642,7 +1768,7 @@
                 "sec1-title": "Resume / CV | BB Lean Expert",
                 "sec1-sub": "個人履歷、跨界鏈結、精實工作台與黑帶六標準差策略羅盤",
                 "sec2a-title": "Device > Circuit > Application",
-                "sec2a-sub": "半導體元件物理、射頻/類比電路、77GHz 雷達 SOC、記憶體與電源管理晶片",
+                "sec2a-sub": "半導體元件物理、射頻/類比電路、77GHz 雷達 SOC、記憶體、電源管理與車用 MCU 晶片",
                 "sec2b-title": "Test Coverage and Yield Improvement",
                 "sec2b-sub": "半導體跨站測試覆蓋率最佳化 (CP / FT / SLT) 與晶圓良率改善實務指南",
                 "sec3-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
@@ -1657,6 +1783,7 @@
                 "title-dev3": "AutoRF: CMOS RF PA & LNA Design Suite",
                 "title-dev4": "Memory Notes · 記憶體知識地圖",
                 "title-dev5": "PMIC Notes · 電源管理 IC 知識地圖",
+                "title-dev6": "MCU Notes · 車用與高精度類比 MCU 知識地圖",
                 "title-test1": "半導體跨站測試覆蓋優化 SOP",
                 "title-test2": "半導體良率改善分析工具與實務方法論",
                 "title-ai1": "AI 工程實戰課：給前線部署工程師 (FDE)",
@@ -1671,6 +1798,7 @@
                 "tag-dev3": "CMOS 射頻 · PA / LNA 自動化",
                 "tag-dev4": "記憶體架構 · 知識地圖",
                 "tag-dev5": "電源管理 · 轉換器拓撲",
+                "tag-dev6": "車用微控 · 類比前端 AFE",
                 "tag-test1": "測試工程 · 跨站覆蓋 SOP",
                 "tag-test2": "製程良率 · 實務分析方法論",
                 "tag-ai1": "前線部署工程師 · 企業級 AI 系統",
@@ -1685,6 +1813,7 @@
                 "desc-dev3": "自動化 CMOS 射頻功率放大器 (PA) 與低雜訊放大器 (LNA) 設計平台：史密斯圖阻抗匹配、線性度與增益最佳化。",
                 "desc-dev4": "SRAM 6T、DRAM 1T1C、3D NAND Flash 垂直堆疊技術及新世代非揮發性記憶體 (MRAM / RRAM) 的架構深探。",
                 "desc-dev5": "Buck / Boost 降升壓轉換器、LDO 低壓降穩壓器、電感電流迴路與電源能效 (Power Efficiency) 深度分析。",
+                "desc-dev6": "車用微控制器與高精度類比 PMIC 整合：Arm Cortex-M 微架構、雙通道 16-bit ΔΣ ADC 類比前端 (AFE)、車用電池管理 (BMS/IBS) 與 ISO 26262 ASIL-C 功能安全。",
                 "desc-test1": "晶圓針測 (CP/Wafer Sort)、封裝成品測試 (FT)、系統級測試 (SLT) 之間故障模型互補覆蓋、測試時間縮減與防漏指南。",
                 "desc-test2": "晶圓圖缺陷群聚辨識、帕雷托分析 (Pareto 80/20)、帕松模型 (Poisson Yield Model)、根本原因分析 (RCA) 與良率爬坡實戰。",
                 "desc-ai1": "專為技術前線量身打造的軟體工程手冊：涵蓋規格驅動開發 (Spec-Driven with Pydantic)、LangGraph 耐久狀態機 Agent、PostgreSQL pgvector 雙階段混合檢索 (Hybrid RAG) 與自動化 CI/CD 評測關卡。",
@@ -1704,7 +1833,7 @@
                 "hero-title": "Masa Hsin-Lung Tu <span class='bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent'>Engineering & Innovation Portal</span>",
                 "hero-desc": "Integrated engineering hub spanning Semiconductor Physics ➔ Circuit & Chip Architecture ➔ Test Coverage & Yield Engineering ➔ Lean Six Sigma Management ➔ Enterprise Agentic AI & Financial OpEx Strategy.",
                 "search-placeholder": "Find (Radar, PMIC, Yield, OpEx, FDE...)",
-                "filter-all": "All (12)",
+                "filter-all": "All (13)",
                 "filter-cv": "I. CV & Lean Six Sigma",
                 "filter-device": "II-A. Device & Circuit Systems",
                 "filter-test": "II-B. Test & Yield Improvement",
@@ -1712,7 +1841,7 @@
                 "sec1-title": "Resume / CV | BB Lean Expert",
                 "sec1-sub": "Interactive CV, Cross-disciplinary Milestones, Lean Workspace & Six Sigma Compass",
                 "sec2a-title": "Device > Circuit > Application",
-                "sec2a-sub": "Semiconductor Physics, RF/Analog Circuits, 77GHz Radar SOC, Memory & PMIC Systems",
+                "sec2a-sub": "Semiconductor Physics, RF/Analog Circuits, 77GHz Radar SOC, Memory, PMIC & Automotive MCU Systems",
                 "sec2b-title": "Test Coverage and Yield Improvement",
                 "sec2b-sub": "Cross-station Test Coverage Optimization (CP/FT/SLT) & Foundry Yield Learning Playbook",
                 "sec3-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
@@ -1727,6 +1856,7 @@
                 "title-dev3": "AutoRF: CMOS RF PA & LNA Design Suite",
                 "title-dev4": "Memory Notes · Knowledge Map",
                 "title-dev5": "PMIC Notes · Power Management IC Map",
+                "title-dev6": "MCU Notes · Automotive & Precision Analog MCU Map",
                 "title-test1": "Semiconductor Test Coverage SOP",
                 "title-test2": "Semiconductor Yield Improvement Playbook",
                 "title-ai1": "AI Engineering for Forward Deployed Engineers (FDE)",
@@ -1741,6 +1871,7 @@
                 "tag-dev3": "CMOS RF · PA/LNA Suite",
                 "tag-dev4": "Memory Systems · Knowledge Map",
                 "tag-dev5": "Power Management · Topologies",
+                "tag-dev6": "Automotive MCU · Precision Analog",
                 "tag-test1": "Test Engineering · SOP",
                 "tag-test2": "Foundry Yield · Methodology",
                 "tag-ai1": "Forward Deployed Engineer · AI",
@@ -1755,6 +1886,7 @@
                 "desc-dev3": "Automated CMOS RF Power Amplifier & Low Noise Amplifier design suite: Smith chart matching, linearity, and gain optimization.",
                 "desc-dev4": "Architectural breakdown across SRAM 6T, DRAM 1T1C cells, 3D NAND flash vertical tiers, and emerging non-volatile memories.",
                 "desc-dev5": "DC-DC Buck/Boost converters, LDO regulators, inductor current loops, and power conversion efficiency analysis.",
+                "desc-dev6": "Automotive MCU & precision analog PMIC integration: Arm Cortex-M core, dual-channel 16-bit ΔΣ ADC analog front-end (AFE), Battery Management Systems (BMS/IBS), and ISO 26262 ASIL-C functional safety.",
                 "desc-test1": "Multi-stage test coverage optimization across Wafer Sort (CP), Final Test (FT), and System Level Test (SLT) with test-time reduction.",
                 "desc-test2": "Wafer map spatial defect clustering, Pareto 80/20 analysis, Poisson yield models, root cause analysis (RCA), and rapid yield ramp.",
                 "desc-ai1": "Hands-on engineering playbook: Spec-Driven Development with Pydantic, LangGraph durable state machines, pgvector Hybrid RAG, and CI/CD evaluation gates.",

@@ -23,39 +23,46 @@ def run_verification():
         yield_title_zh = page.locator('[data-i18n="title-test2"]').text_content().strip()
         test_title_zh = page.locator('[data-i18n="title-test1"]').text_content().strip()
         financial_title_zh = page.locator('[data-i18n="title-ai2"]').text_content().strip()
+        mcu_title_zh = page.locator('[data-i18n="title-dev6"]').text_content().strip()
         print(f"Yield Title (ZH): {yield_title_zh}")
         print(f"Test Title (ZH): {test_title_zh}")
         print(f"Financial Title (ZH): {financial_title_zh}")
+        print(f"MCU Title (ZH): {mcu_title_zh}")
         assert "良率" in yield_title_zh, "Failed: Chinese title for Yield not found"
         assert "測試" in test_title_zh, "Failed: Chinese title for Test not found"
         assert "財務" in financial_title_zh, "Failed: Chinese title for Financial not found"
+        assert "車用" in mcu_title_zh, "Failed: Chinese title for MCU not found"
 
         total_cards_zh = page.locator('article.portal-card').count()
         print(f"Total cards found: {total_cards_zh}")
-        assert total_cards_zh == 12, f"Expected 12 cards, got {total_cards_zh}"
+        assert total_cards_zh == 13, f"Expected 13 cards, got {total_cards_zh}"
 
         # 2. Click Language Toggle to English
         print("\n--- 2. Toggling Language to English ---")
         page.click("#langToggleBtn")
         page.wait_for_timeout(300)
 
-        # Verify English title in Yield and Financial
+        # Verify English title in Yield, Financial, and MCU
         yield_title_en = page.locator('[data-i18n="title-test2"]').text_content().strip()
         test_title_en = page.locator('[data-i18n="title-test1"]').text_content().strip()
         financial_title_en = page.locator('[data-i18n="title-ai2"]').text_content().strip()
+        mcu_title_en = page.locator('[data-i18n="title-dev6"]').text_content().strip()
         print(f"Yield Title (EN): {yield_title_en}")
         print(f"Test Title (EN): {test_title_en}")
         print(f"Financial Title (EN): {financial_title_en}")
+        print(f"MCU Title (EN): {mcu_title_en}")
 
         chinese_char_pattern = re.compile(r'[\u4e00-\u9fff]')
         assert not chinese_char_pattern.search(yield_title_en), f"Chinese in Yield EN: {yield_title_en}"
         assert not chinese_char_pattern.search(test_title_en), f"Chinese in Test EN: {test_title_en}"
         assert not chinese_char_pattern.search(financial_title_en), f"Chinese in Financial EN: {financial_title_en}"
+        assert not chinese_char_pattern.search(mcu_title_en), f"Chinese in MCU EN: {mcu_title_en}"
         assert "Financial & OpEx" in financial_title_en, "Expected 'Financial & OpEx' in title"
+        assert "MCU Notes" in mcu_title_en, "Expected 'MCU Notes' in title"
 
-        # Check all 12 card titles in EN
+        # Check all 13 card titles in EN
         titles = page.locator('article h3').all_text_contents()
-        print(f"\nAll 12 Card Titles in English:")
+        print(f"\nAll 13 Card Titles in English:")
         for idx, t in enumerate(titles, 1):
             t_clean = t.strip()
             has_chinese = bool(chinese_char_pattern.search(t_clean))
@@ -65,17 +72,17 @@ def run_verification():
         # Check result count badge in EN
         badge_en = page.locator("#resultCountBadge").text_content().strip()
         print(f"Badge in EN: {badge_en}")
-        assert "12 Items" in badge_en, f"Expected '12 Items' in badge, got {badge_en}"
+        assert "13 Items" in badge_en, f"Expected '13 Items' in badge, got {badge_en}"
 
         page.screenshot(path="playwright_en_verification.png", full_page=True)
 
         # 3. Test Search / Find
         print("\n--- 3. Testing Search (Find) Filter ---")
-        page.fill("#searchInput", "Financial")
+        page.fill("#searchInput", "MCU")
         page.wait_for_timeout(300)
         visible_cards = page.locator('article:visible').count()
-        print(f"Search for 'Financial' -> visible cards: {visible_cards}")
-        assert visible_cards == 1, f"Expected 1 card visible for 'Financial', got {visible_cards}"
+        print(f"Search for 'MCU' -> visible cards: {visible_cards}")
+        assert visible_cards == 1, f"Expected 1 card visible for 'MCU', got {visible_cards}"
 
         page.fill("#searchInput", "")
         page.wait_for_timeout(200)
@@ -112,7 +119,7 @@ def run_verification():
         assert "財務" in financial_title_zh_again
 
         browser.close()
-        print("\nALL 12 CARDS AND LIGHT MODE TESTS PASSED SUCCESSFULLY! ✅")
+        print("\nALL 13 CARDS AND LIGHT MODE TESTS PASSED SUCCESSFULLY! ✅")
 
 if __name__ == '__main__':
     run_verification()
