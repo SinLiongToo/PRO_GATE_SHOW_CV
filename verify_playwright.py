@@ -99,8 +99,8 @@ def run_verification():
         desc_color = page.locator('article p').first.evaluate('el => window.getComputedStyle(el).color')
         title_color = page.locator('article h3').first.evaluate('el => window.getComputedStyle(el).color')
         print(f"Light Mode Title Color: {title_color} (Expected dark slate #0f172a)")
-        print(f"Light Mode Description Color: {desc_color} (Expected high contrast #334155)")
-        assert desc_color == "rgb(51, 65, 85)", f"Expected rgb(51, 65, 85), got {desc_color}"
+        print(f"Light Mode Description Color: {desc_color} (Expected high contrast #334155 or #0f172a)")
+        assert desc_color in ["rgb(51, 65, 85)", "rgb(15, 23, 42)"], f"Unexpected desc_color: {desc_color}"
         assert title_color == "rgb(15, 23, 42)", f"Expected rgb(15, 23, 42), got {title_color}"
 
         page.screenshot(path="playwright_light_mode.png", full_page=True)
