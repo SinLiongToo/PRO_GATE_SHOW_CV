@@ -491,10 +491,10 @@
                     </div>
                     <input type="text" id="searchInput" 
                         class="w-full pl-9 pr-20 py-1.5 sm:py-2 rounded-xl bg-slate-900/70 border border-slate-700/60 text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
-                        placeholder="搜尋 (Radar, PMIC, Yield, OpEx, FDE...)" 
+                        placeholder="搜尋 (Radar, PMIC, Yield, SBL, Defect, OpEx, FDE...)" 
                         data-i18n-ph="search-placeholder">
                     <div class="absolute inset-y-0 right-1.5 flex items-center">
-                        <span id="resultCountBadge" class="text-[11px] px-2 py-0.5 rounded-lg bg-sky-500/20 text-sky-300 font-mono font-medium">13 項</span>
+                        <span id="resultCountBadge" class="text-[11px] px-2 py-0.5 rounded-lg bg-sky-500/20 text-sky-300 font-mono font-medium">16 項</span>
                     </div>
                 </div>
             </div>
@@ -541,9 +541,13 @@
                     <span>🔬</span>
                     <span data-i18n="filter-test">二、測試覆蓋與良率改善</span>
                 </button>
+                <button class="filter-btn shrink-0 px-3 py-1 rounded-lg text-xs font-medium transition-all bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 flex items-center gap-1.5" data-filter="cat-dashboards">
+                    <span>📊</span>
+                    <span data-i18n="filter-dashboards">三、測試發布與良率分析儀表板</span>
+                </button>
                 <button class="filter-btn shrink-0 px-3 py-1 rounded-lg text-xs font-medium transition-all bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 flex items-center gap-1.5" data-filter="cat-ai">
                     <span>🤖</span>
-                    <span data-i18n="filter-ai">三、AI 系統、自動化與財務策略</span>
+                    <span data-i18n="filter-ai">四、AI 系統、自動化與財務策略</span>
                 </button>
             </div>
         </div>
@@ -1547,17 +1551,334 @@
 
 
         <!-- =================================================================== -->
-        <!-- SECTION 3: Other Expertise | AI ML | Automation | Financial OpEx    -->
+        <!-- SECTION 3: Test Program Release, Yield Trend & Defect Analytics    -->
+        <!-- =================================================================== -->
+        <section class="category-block space-y-4" data-category="cat-dashboards" id="section-dashboards">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+                <div class="flex items-center space-x-3">
+                    <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono font-bold text-sm">03</span>
+                    <div>
+                        <h2 class="text-xl font-bold font-heading text-slate-100 flex items-center gap-2" data-i18n="sec3-title">
+                            Test Program Release, Yield & Defect Dashboards
+                        </h2>
+                        <p class="text-xs text-slate-400" data-i18n="sec3-sub">測試程式 (TP) 發布參數偏移檢查、Test Summary 良率/Bin/SBL 扣留分析、CQC 晶圓缺陷與 PPM 趨勢儀表板</p>
+                    </div>
+                </div>
+                <span class="text-xs text-slate-500 font-mono">3 Portals</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 11: CSV PARSER FOR TP release -->
+                <article class="portal-card rounded-2xl overflow-hidden flex flex-col group" data-tags="csv parser tp release sanity shift test program ate cp ft migration revision 測試程式 參數偏移 釋出驗證">
+                    <div class="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between">
+                        <span class="badge-pill bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono text-[11px]" data-i18n="tag-dash1">
+                            測試工程 · 程式發布驗證
+                        </span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md font-semibold">
+                            TP SANITY PARSER
+                        </span>
+                    </div>
+
+                    <div class="svg-canvas bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <path d="M0 34H360 M0 68H360 M0 102H360" stroke="#06b6d4" stroke-opacity="0.1" stroke-dasharray="3 3"/>
+                            
+                            <!-- Left: CSV File Input Node -->
+                            <g transform="translate(16, 20)">
+                                <rect x="0" y="0" width="62" height="78" rx="6" fill="#083344" fill-opacity="0.5" stroke="#06b6d4" stroke-width="1.5"/>
+                                <rect x="8" y="10" width="28" height="6" rx="2" fill="#22d3ee"/>
+                                <line x1="8" y1="24" x2="52" y2="24" stroke="#67e8f9" stroke-width="1.5"/>
+                                <line x1="8" y1="34" x2="46" y2="34" stroke="#67e8f9" stroke-width="1.2"/>
+                                <line x1="8" y1="44" x2="54" y2="44" stroke="#67e8f9" stroke-width="1.2"/>
+                                <rect x="8" y="56" width="46" height="14" rx="3" fill="#0e7490" fill-opacity="0.6"/>
+                                <text x="31" y="66" text-anchor="middle" fill="#cffafe" font-size="6.5" font-weight="bold" font-family="monospace">TP_REV.CSV</text>
+                            </g>
+
+                            <!-- Flow arrow -->
+                            <path d="M84 59H108M103 54L108 59L103 64" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+
+                            <!-- Middle: Sanity & Shift Engine Core -->
+                            <g transform="translate(114, 22)">
+                                <rect x="0" y="0" width="112" height="74" rx="7" fill="#0c4a6e" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1.5"/>
+                                <text x="56" y="18" text-anchor="middle" fill="#7dd3fc" font-size="7.5" font-weight="bold" font-family="monospace">SANITY ENGINE</text>
+                                
+                                <!-- Shift Status Badges -->
+                                <rect x="10" y="28" width="42" height="16" rx="3" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+                                <text x="31" y="39" text-anchor="middle" fill="#a7f3d0" font-size="6" font-family="monospace">MATCH 100%</text>
+
+                                <rect x="58" y="28" width="44" height="16" rx="3" fill="#78350f" stroke="#f59e0b" stroke-width="1"/>
+                                <text x="80" y="39" text-anchor="middle" fill="#fde68a" font-size="6" font-family="monospace">SHIFT CAT A/B</text>
+
+                                <rect x="10" y="50" width="92" height="14" rx="3" fill="#881337" fill-opacity="0.4" stroke="#f43f5e" stroke-width="1"/>
+                                <text x="56" y="60" text-anchor="middle" fill="#fecdd3" font-size="6.5" font-family="monospace">RISK: Cpk &lt; 1.67 ALERT</text>
+                            </g>
+
+                            <!-- Flow arrow -->
+                            <path d="M232 59H254M249 54L254 59L249 64" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+
+                            <!-- Right: Shift Delta Bar Chart -->
+                            <g transform="translate(260, 20)">
+                                <rect x="0" y="0" width="84" height="78" rx="6" fill="#082f49" fill-opacity="0.4" stroke="#0ea5e9" stroke-width="1.4"/>
+                                <line x1="12" y1="62" x2="74" y2="62" stroke="#64748b" stroke-width="1"/>
+                                <!-- Delta Bars -->
+                                <rect x="16" y="24" width="10" height="38" rx="2" fill="#10b981"/>
+                                <rect x="32" y="36" width="10" height="26" rx="2" fill="#06b6d4"/>
+                                <rect x="48" y="44" width="10" height="18" rx="2" fill="#f59e0b"/>
+                                <rect x="64" y="16" width="10" height="46" rx="2" fill="#f43f5e"/>
+                                <text x="42" y="73" text-anchor="middle" fill="#bae6fd" font-size="6" font-family="monospace">SHIFT DELTA</text>
+                            </g>
+
+                            <text x="180" y="118" text-anchor="middle" fill="#22d3ee" font-size="8" font-family="monospace">TP RELEASE SANITY &amp; SHIFT VERIFICATION</text>
+                        </svg>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-100 group-hover:text-cyan-400 transition-colors" data-i18n="title-dash1">
+                                CSV Parser for TP Release：測試程式發布與參數偏移分析儀表板
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="desc-dash1">
+                                專為半導體測試程式 (TP) 發布打造的 Sanity Check 與參數偏移分析儀表板：支援跨版本 CSV 測試紀錄快速對比、測試項目自動配對、Cat A/B/C 參數飄移檢測與 Cpk &lt; 1.67 風險預警。
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-slate-500">sanity-csv-parser-dashboard</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyToClipboard('https://sinliongtoo.github.io/sanity-csv-parser-dashboard/', this)" class="p-1.5 rounded-lg border border-slate-700/60 hover:border-slate-500 text-slate-400 hover:text-white text-xs transition-colors" title="複製連結 / Copy URL">
+                                    📋
+                                </button>
+                                <a href="https://sinliongtoo.github.io/sanity-csv-parser-dashboard/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition-all">
+                                    <span data-i18n="btn-open">開啟站台</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 12: YIELD | BIN TREND | SBL HOLD RATE dashboard -->
+                <article class="portal-card rounded-2xl overflow-hidden flex flex-col group" data-tags="yield bin trend sbl hold rate test summary ate cp ft wafer sort fail pareto spc 良率趨勢 統計扣留 失敗分類">
+                    <div class="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between">
+                        <span class="badge-pill bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono text-[11px]" data-i18n="tag-dash2">
+                            良率工程 · 統計良率監控
+                        </span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md font-semibold">
+                            YIELD & SBL TREND
+                        </span>
+                    </div>
+
+                    <div class="svg-canvas bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <path d="M0 34H360 M0 68H360 M0 102H360" stroke="#06b6d4" stroke-opacity="0.1" stroke-dasharray="3 3"/>
+                            
+                            <!-- Left: Yield Trend Line with SBL limit -->
+                            <g transform="translate(18, 16)">
+                                <rect x="0" y="0" width="170" height="84" rx="6" fill="#083344" fill-opacity="0.4" stroke="#0891b2" stroke-width="1.3"/>
+                                <line x1="14" y1="70" x2="158" y2="70" stroke="#64748b" stroke-width="1"/>
+                                <line x1="14" y1="14" x2="14" y2="70" stroke="#64748b" stroke-width="1"/>
+                                
+                                <!-- SBL Lower Limit (Dashed Red Line) -->
+                                <line x1="14" y1="52" x2="158" y2="52" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 2"/>
+                                <text x="156" y="49" text-anchor="end" fill="#fca5a5" font-size="5.5" font-family="monospace">SBL LIMIT (98.0%)</text>
+                                
+                                <!-- Multi-lot Yield Curve -->
+                                <path d="M18 36L42 28L68 32L94 22L118 60L144 20" stroke="#10b981" stroke-width="2.2" stroke-linecap="round"/>
+                                <circle cx="18" cy="36" r="2.5" fill="#10b981"/>
+                                <circle cx="42" cy="28" r="2.5" fill="#10b981"/>
+                                <circle cx="68" cy="32" r="2.5" fill="#10b981"/>
+                                <circle cx="94" cy="22" r="2.5" fill="#10b981"/>
+                                <!-- Violation / Hold Lot marker -->
+                                <circle cx="118" cy="60" r="4.5" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5"/>
+                                <circle cx="144" cy="20" r="2.5" fill="#10b981"/>
+                                
+                                <rect x="98" y="68" width="40" height="12" rx="2" fill="#7f1d1d" stroke="#ef4444" stroke-width="0.8"/>
+                                <text x="118" y="77" text-anchor="middle" fill="#fee2e2" font-size="5.5" font-weight="bold" font-family="monospace">HOLD LOT</text>
+                                
+                                <text x="85" y="10" text-anchor="middle" fill="#67e8f9" font-size="6.5" font-weight="bold" font-family="monospace">YIELD TREND &amp; SBL CHECK</text>
+                            </g>
+
+                            <!-- Right: Stacked Bin Trend & Pareto -->
+                            <g transform="translate(198, 16)">
+                                <rect x="0" y="0" width="144" height="84" rx="6" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1.3"/>
+                                <line x1="12" y1="70" x2="132" y2="70" stroke="#64748b" stroke-width="1"/>
+                                
+                                <!-- Stacked Bars: Lot 1 to 5 -->
+                                <!-- Lot 1 -->
+                                <rect x="18" y="24" width="16" height="46" fill="#059669" rx="1"/>
+                                <rect x="18" y="20" width="16" height="4" fill="#f59e0b"/>
+                                <!-- Lot 2 -->
+                                <rect x="42" y="20" width="16" height="50" fill="#059669" rx="1"/>
+                                <rect x="42" y="17" width="16" height="3" fill="#f59e0b"/>
+                                <!-- Lot 3: Fail Bin surge -->
+                                <rect x="66" y="38" width="16" height="32" fill="#059669" rx="1"/>
+                                <rect x="66" y="24" width="16" height="14" fill="#ef4444"/>
+                                <rect x="66" y="18" width="16" height="6" fill="#f59e0b"/>
+                                <!-- Lot 4 -->
+                                <rect x="90" y="22" width="16" height="48" fill="#059669" rx="1"/>
+                                <rect x="90" y="18" width="16" height="4" fill="#06b6d4"/>
+                                <!-- Lot 5 -->
+                                <rect x="114" y="18" width="16" height="52" fill="#059669" rx="1"/>
+                                <rect x="114" y="15" width="16" height="3" fill="#06b6d4"/>
+
+                                <text x="72" y="10" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">BIN TREND / PARETO</text>
+                                <text x="72" y="80" text-anchor="middle" fill="#94a3b8" font-size="5.5" font-family="monospace">BIN1 PASS vs FAIL BINS</text>
+                            </g>
+
+                            <text x="180" y="118" text-anchor="middle" fill="#22d3ee" font-size="8" font-family="monospace">LOT-BY-LOT YIELD / BIN TREND &amp; SBL RATE</text>
+                        </svg>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-100 group-hover:text-cyan-400 transition-colors" data-i18n="title-dash2">
+                                Test Summary 良率、Bin 趨勢與 SBL 扣留率分析儀表板
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="desc-dash2">
+                                整合半導體測試摘要 (Test Summary) 的跨批次良率趨勢、Bin 分佈統計與 SBL (Statistical Bin Limit) 扣留率監控：即時辨識異常批次、Fail Bin 帕雷托分析與良率波動成因追蹤。
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-slate-500">test-summary-trend-sbl</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyToClipboard('https://sinliongtoo.github.io/test-summary-trend-sbl/test_summary_trend.html', this)" class="p-1.5 rounded-lg border border-slate-700/60 hover:border-slate-500 text-slate-400 hover:text-white text-xs transition-colors" title="複製連結 / Copy URL">
+                                    📋
+                                </button>
+                                <a href="https://sinliongtoo.github.io/test-summary-trend-sbl/test_summary_trend.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition-all">
+                                    <span data-i18n="btn-open">開啟站台</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 13: CQC | COHA | map | PPM trend dashboard -->
+                <article class="portal-card rounded-2xl overflow-hidden flex flex-col group" data-tags="cqc coha wafer defect map ppm trend spatial clustering die viewer inspection 晶圓缺陷圖 缺陷檢驗 空間分佈 帕雷托">
+                    <div class="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between">
+                        <span class="badge-pill bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono text-[11px]" data-i18n="tag-dash3">
+                            晶圓品質 · 空間缺陷視覺化
+                        </span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-md font-semibold">
+                            CQC & COHA MAP
+                        </span>
+                    </div>
+
+                    <div class="svg-canvas bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <path d="M0 34H360 M0 68H360 M0 102H360" stroke="#06b6d4" stroke-opacity="0.1" stroke-dasharray="3 3"/>
+                            
+                            <!-- Left: Wafer Defect Map (Interactive Viewer representation) -->
+                            <g transform="translate(20, 10)">
+                                <!-- Wafer Circle -->
+                                <circle cx="48" cy="48" r="42" fill="#082f49" fill-opacity="0.6" stroke="#06b6d4" stroke-width="1.8"/>
+                                <!-- Notch -->
+                                <path d="M45 6C48 8 48 8 51 6" stroke="#06b6d4" stroke-width="1.6"/>
+                                <!-- Die Grid lines inside wafer -->
+                                <path d="M22 48H74 M48 22V74 M30 32H66 M30 64H66 M32 30V66 M64 30V66" stroke="#164e63" stroke-width="0.8"/>
+                                <!-- Defect points: ring and cluster patterns -->
+                                <circle cx="38" cy="38" r="2" fill="#10b981"/>
+                                <circle cx="48" cy="48" r="2" fill="#10b981"/>
+                                <circle cx="58" cy="38" r="2" fill="#10b981"/>
+                                <!-- Cluster defect dots (Red / Orange) -->
+                                <circle cx="68" cy="56" r="2.5" fill="#ef4444"/>
+                                <circle cx="72" cy="52" r="2" fill="#ef4444"/>
+                                <circle cx="70" cy="60" r="2" fill="#f59e0b"/>
+                                <circle cx="64" cy="54" r="2" fill="#ef4444"/>
+                                <text x="48" y="100" text-anchor="middle" fill="#67e8f9" font-size="6.5" font-weight="bold" font-family="monospace">WAFER MAP</text>
+                            </g>
+
+                            <!-- Middle: Die Zoom / COHA In-die Defect Map -->
+                            <g transform="translate(130, 16)">
+                                <rect x="0" y="0" width="96" height="84" rx="6" fill="#083344" fill-opacity="0.5" stroke="#0ea5e9" stroke-width="1.3"/>
+                                <text x="48" y="13" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">DIE / COHA ZOOM</text>
+                                
+                                <!-- Die Internal Circuit Blocks -->
+                                <rect x="10" y="20" width="34" height="26" rx="2" fill="#0c4a6e" stroke="#38bdf8" stroke-width="0.8"/>
+                                <text x="27" y="35" text-anchor="middle" fill="#93c5fd" font-size="5.5" font-family="monospace">CORE</text>
+                                
+                                <rect x="52" y="20" width="34" height="26" rx="2" fill="#0c4a6e" stroke="#38bdf8" stroke-width="0.8"/>
+                                <text x="69" y="35" text-anchor="middle" fill="#93c5fd" font-size="5.5" font-family="monospace">AFE / IO</text>
+                                
+                                <!-- In-die defect markers -->
+                                <circle cx="28" cy="38" r="2.2" fill="#ef4444" stroke="#fecdd3" stroke-width="0.8"/>
+                                <circle cx="32" cy="40" r="1.8" fill="#ef4444"/>
+                                
+                                <rect x="10" y="52" width="76" height="18" rx="2" fill="#164e63" stroke="#22d3ee" stroke-width="0.8"/>
+                                <text x="48" y="64" text-anchor="middle" fill="#cffafe" font-size="5.5" font-family="monospace">CQC SPATIAL COORD</text>
+                                <text x="48" y="78" text-anchor="middle" fill="#94a3b8" font-size="5" font-family="monospace">DIE-LEVEL &amp; IN-DIE LOCATIONS</text>
+                            </g>
+
+                            <!-- Right: PPM Trend & Pareto -->
+                            <g transform="translate(244, 16)">
+                                <rect x="0" y="0" width="102" height="84" rx="6" fill="#082f49" fill-opacity="0.4" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="51" y="13" text-anchor="middle" fill="#7dd3fc" font-size="6.5" font-weight="bold" font-family="monospace">PPM TREND &amp; PARETO</text>
+                                
+                                <!-- PPM Bars -->
+                                <line x1="10" y1="68" x2="92" y2="68" stroke="#64748b" stroke-width="1"/>
+                                <rect x="14" y="44" width="12" height="24" rx="1" fill="#f59e0b"/>
+                                <rect x="30" y="32" width="12" height="36" rx="1" fill="#f43f5e"/>
+                                <rect x="46" y="50" width="12" height="18" rx="1" fill="#10b981"/>
+                                <rect x="62" y="56" width="12" height="12" rx="1" fill="#06b6d4"/>
+                                <rect x="78" y="60" width="12" height="8" rx="1" fill="#10b981"/>
+                                
+                                <!-- Trend overlay curve -->
+                                <path d="M20 40L36 28L52 46L68 52L84 56" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+                                <circle cx="36" cy="28" r="2.5" fill="#f43f5e"/>
+                                
+                                <text x="51" y="79" text-anchor="middle" fill="#94a3b8" font-size="5.5" font-family="monospace">DEFECT PPM DYNAMICS</text>
+                            </g>
+
+                            <text x="180" y="118" text-anchor="middle" fill="#22d3ee" font-size="8" font-family="monospace">CQC DEFECT MAP · COHA · WAFER VIEWER · PPM TREND</text>
+                        </svg>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-base font-bold text-slate-100 group-hover:text-cyan-400 transition-colors" data-i18n="title-dash3">
+                                CQC 晶圓缺陷圖、COHA 檢驗與 PPM 趨勢儀表板
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="desc-dash3">
+                                客戶端純前端晶圓缺陷地圖檢視器 (Client-side Wafer Viewer)：解析缺陷 CSV 檔案，動態呈現晶圓級與 Die 內部缺陷微觀分佈 (COHA/CQC)，結合缺陷分類帕雷托與 PPM 趨勢追蹤。
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-[11px] font-mono text-slate-500">Cqc-defect-map</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyToClipboard('https://sinliongtoo.github.io/Cqc-defect-map/', this)" class="p-1.5 rounded-lg border border-slate-700/60 hover:border-slate-500 text-slate-400 hover:text-white text-xs transition-colors" title="複製連結 / Copy URL">
+                                    📋
+                                </button>
+                                <a href="https://sinliongtoo.github.io/Cqc-defect-map/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition-all">
+                                    <span data-i18n="btn-open">開啟站台</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- =================================================================== -->
+        <!-- SECTION 4: Other Expertise | AI ML | Automation | Financial OpEx    -->
         <!-- =================================================================== -->
         <section class="category-block space-y-4" data-category="cat-ai" id="section-ai">
             <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
                 <div class="flex items-center space-x-3">
-                    <span class="p-2 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 font-mono font-bold text-sm">03</span>
+                    <span class="p-2 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 font-mono font-bold text-sm">04</span>
                     <div>
-                        <h2 class="text-xl font-bold font-heading text-slate-100 flex items-center gap-2" data-i18n="sec3-title">
+                        <h2 class="text-xl font-bold font-heading text-slate-100 flex items-center gap-2" data-i18n="sec4-title">
                             Other Expertise | AI ML | Automation | Strategic OpEx
                         </h2>
-                        <p class="text-xs text-slate-400" data-i18n="sec3-sub">前線部署工程師 (FDE)、企業級 Agentic AI 架構、Spec 驅動自動化與半導體財務營運支出分析</p>
+                        <p class="text-xs text-slate-400" data-i18n="sec4-sub">前線部署工程師 (FDE)、企業級 Agentic AI 架構、Spec 驅動自動化與半導體財務營運支出分析</p>
                     </div>
                 </div>
                 <span class="text-xs text-slate-500 font-mono">2 Portals</span>
@@ -1746,7 +2067,7 @@
                     github.com/SinLiongToo
                 </a>
                 <span>•</span>
-                <span class="text-emerald-400">● 13 Portals Active</span>
+                <span class="text-emerald-400">● 16 Portals Active</span>
             </div>
         </div>
     </footer>
@@ -1765,20 +2086,23 @@
                 "header-subtitle": "門戶導航 · Portfolio Hub",
                 "hero-title": "杜信龍 <span class='bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent'>跨界專業入口導航</span>",
                 "hero-desc": "跨越「半導體元件物理 ➔ 電路與晶片架構 ➔ 測試覆蓋與良率工程 ➔ 精實六標準差管理 ➔ 前線 AI 系統工程與財務 OpEx 策略」的全面實務樞紐。圖文直覺導引，一鍵快速直達各領域平台。",
-                "search-placeholder": "搜尋 (Radar, PMIC, Yield, OpEx, FDE...)",
+                "search-placeholder": "搜尋 (Radar, PMIC, Yield, SBL, Defect, OpEx, FDE...)",
                 "filter-all": "全部 (All)",
                 "filter-cv": "一、履歷 & 精實管理",
                 "filter-device": "二、元件與電路系統",
                 "filter-test": "二、測試覆蓋與良率改善",
-                "filter-ai": "三、AI 系統、自動化與財務策略",
+                "filter-dashboards": "三、測試發布與良率分析儀表板",
+                "filter-ai": "四、AI 系統、自動化與財務策略",
                 "sec1-title": "Resume / CV | BB Lean Expert",
                 "sec1-sub": "個人履歷、跨界鏈結、精實工作台與黑帶六標準差策略羅盤",
                 "sec2a-title": "Device > Circuit > Application",
                 "sec2a-sub": "半導體元件物理、射頻/類比電路、77GHz 雷達 SOC、記憶體、電源管理與車用 MCU 晶片",
                 "sec2b-title": "Test Coverage and Yield Improvement",
                 "sec2b-sub": "半導體跨站測試覆蓋率最佳化 (CP / FT / SLT) 與晶圓良率改善實務指南",
-                "sec3-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
-                "sec3-sub": "前線部署工程師 (FDE)、企業級 Agentic AI 架構、Spec 驅動自動化與半導體財務營運支出分析",
+                "sec3-title": "Test Program Release, Yield & Defect Dashboards",
+                "sec3-sub": "測試程式 (TP) 發布參數偏移檢查、Test Summary 良率/Bin/SBL 扣留分析、CQC 晶圓缺陷與 PPM 趨勢儀表板",
+                "sec4-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
+                "sec4-sub": "前線部署工程師 (FDE)、企業級 Agentic AI 架構、Spec 驅動自動化與半導體財務營運支出分析",
                 
                 // Titles
                 "title-cv1": "Masa Hsin-Lung Tu | 杜信龍",
@@ -1792,6 +2116,9 @@
                 "title-dev6": "MCU Notes · 車用與高精度類比 MCU 知識地圖",
                 "title-test1": "半導體跨站測試覆蓋優化 SOP",
                 "title-test2": "半導體良率改善分析工具與實務方法論",
+                "title-dash1": "CSV Parser for TP Release：測試程式發布與參數偏移分析儀表板",
+                "title-dash2": "Test Summary 良率、Bin 趨勢與 SBL 扣留率分析儀表板",
+                "title-dash3": "CQC 晶圓缺陷圖、COHA 檢驗與 PPM 趨勢儀表板",
                 "title-ai1": "AI 工程實戰課：給前線部署工程師 (FDE)",
                 "title-ai2": "財務與 OpEx 策略對齊儀表板",
 
@@ -1807,6 +2134,9 @@
                 "tag-dev6": "車用微控 · 類比前端 AFE",
                 "tag-test1": "測試工程 · 跨站覆蓋 SOP",
                 "tag-test2": "製程良率 · 實務分析方法論",
+                "tag-dash1": "測試工程 · 程式發布驗證",
+                "tag-dash2": "良率工程 · 統計良率監控",
+                "tag-dash3": "晶圓品質 · 空間缺陷視覺化",
                 "tag-ai1": "前線部署工程師 · 企業級 AI 系統",
                 "tag-ai2": "財報解析 · 營運支出策略",
 
@@ -1822,6 +2152,9 @@
                 "desc-dev6": "車用微控制器與高精度類比 PMIC 整合：Arm Cortex-M 微架構、雙通道 16-bit ΔΣ ADC 類比前端 (AFE)、車用電池管理 (BMS/IBS) 與 ISO 26262 ASIL-C 功能安全。",
                 "desc-test1": "晶圓針測 (CP/Wafer Sort)、封裝成品測試 (FT)、系統級測試 (SLT) 之間故障模型互補覆蓋、測試時間縮減與防漏指南。",
                 "desc-test2": "晶圓圖缺陷群聚辨識、帕雷托分析 (Pareto 80/20)、帕松模型 (Poisson Yield Model)、根本原因分析 (RCA) 與良率爬坡實戰。",
+                "desc-dash1": "專為半導體測試程式 (TP) 發布打造的 Sanity Check 與參數偏移分析儀表板：支援跨版本 CSV 測試紀錄快速對比、測試項目自動配對、Cat A/B/C 參數飄移檢測與 Cpk < 1.67 風險預警。",
+                "desc-dash2": "整合半導體測試摘要 (Test Summary) 的跨批次良率趨勢、Bin 分佈統計與 SBL (Statistical Bin Limit) 扣留率監控：即時辨識異常批次、Fail Bin 帕雷托分析與良率波動成因追蹤。",
+                "desc-dash3": "客戶端純前端晶圓缺陷地圖檢視器 (Client-side Wafer Viewer)：解析缺陷 CSV 檔案，動態呈現晶圓級與 Die 內部缺陷微觀分佈 (COHA/CQC)，結合缺陷分類帕雷托與 PPM 趨勢追蹤。",
                 "desc-ai1": "專為技術前線量身打造的軟體工程手冊：涵蓋規格驅動開發 (Spec-Driven with Pydantic)、LangGraph 耐久狀態機 Agent、PostgreSQL pgvector 雙階段混合檢索 (Hybrid RAG) 與自動化 CI/CD 評測關卡。",
                 "desc-ai2": "全球半導體與科技巨頭財報 (10-K / 20-F) 爬蟲解析、CapEx / OpEx 研發投入強度對比、毛利率成長動能與跨產業資本配置策略儀表板。",
                 
@@ -1838,20 +2171,23 @@
                 "header-subtitle": "Navigation & Portfolio Hub",
                 "hero-title": "Masa Hsin-Lung Tu <span class='bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent'>Engineering & Innovation Portal</span>",
                 "hero-desc": "Integrated engineering hub spanning Semiconductor Physics ➔ Circuit & Chip Architecture ➔ Test Coverage & Yield Engineering ➔ Lean Six Sigma Management ➔ Enterprise Agentic AI & Financial OpEx Strategy.",
-                "search-placeholder": "Find (Radar, PMIC, Yield, OpEx, FDE...)",
-                "filter-all": "All (13)",
+                "search-placeholder": "Find (Radar, PMIC, Yield, SBL, Defect, OpEx, FDE...)",
+                "filter-all": "All (16)",
                 "filter-cv": "I. CV & Lean Six Sigma",
                 "filter-device": "II-A. Device & Circuit Systems",
                 "filter-test": "II-B. Test & Yield Improvement",
-                "filter-ai": "III. AI, Automation & OpEx Strategy",
+                "filter-dashboards": "III. Test, Yield & Defect Dashboards",
+                "filter-ai": "IV. AI, Automation & OpEx Strategy",
                 "sec1-title": "Resume / CV | BB Lean Expert",
                 "sec1-sub": "Interactive CV, Cross-disciplinary Milestones, Lean Workspace & Six Sigma Compass",
                 "sec2a-title": "Device > Circuit > Application",
                 "sec2a-sub": "Semiconductor Physics, RF/Analog Circuits, 77GHz Radar SOC, Memory, PMIC & Automotive MCU Systems",
                 "sec2b-title": "Test Coverage and Yield Improvement",
                 "sec2b-sub": "Cross-station Test Coverage Optimization (CP/FT/SLT) & Foundry Yield Learning Playbook",
-                "sec3-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
-                "sec3-sub": "Forward Deployed Engineer (FDE), Enterprise Agentic AI, Spec-Driven Systems & Semiconductor Financial OpEx Analytics",
+                "sec3-title": "Test Program Release, Yield & Defect Dashboards",
+                "sec3-sub": "Interactive engineering dashboards for Test Program (TP) sanity validation, yield & bin SBL hold rate analytics, and CQC wafer defect map tracking.",
+                "sec4-title": "Other Expertise | AI ML | Automation | Strategic OpEx",
+                "sec4-sub": "Forward Deployed Engineer (FDE), Enterprise Agentic AI, Spec-Driven Systems & Semiconductor Financial OpEx Analytics",
                 
                 // Titles (Fully English translated)
                 "title-cv1": "Masa Hsin-Lung Tu | Portfolio & CV",
@@ -1865,6 +2201,9 @@
                 "title-dev6": "MCU Notes · Automotive & Precision Analog MCU Map",
                 "title-test1": "Semiconductor Test Coverage SOP",
                 "title-test2": "Semiconductor Yield Improvement Playbook",
+                "title-dash1": "CSV Parser for TP Release & Sanity Shift Dashboard",
+                "title-dash2": "Test Summary Yield, Bin Trend & SBL Hold Rate Dashboard",
+                "title-dash3": "CQC Defect Map, COHA & PPM Trend Dashboard",
                 "title-ai1": "AI Engineering for Forward Deployed Engineers (FDE)",
                 "title-ai2": "Financial & OpEx Strategic Alignment Dashboard",
 
@@ -1880,6 +2219,9 @@
                 "tag-dev6": "Automotive MCU · Precision Analog",
                 "tag-test1": "Test Engineering · SOP",
                 "tag-test2": "Foundry Yield · Methodology",
+                "tag-dash1": "Test Engineering · TP Release",
+                "tag-dash2": "Yield Engineering · SBL Control",
+                "tag-dash3": "Wafer Quality · Defect Viewer",
                 "tag-ai1": "Forward Deployed Engineer · AI",
                 "tag-ai2": "Financial Analytics · OpEx Strategy",
 
@@ -1895,6 +2237,9 @@
                 "desc-dev6": "Automotive MCU & precision analog PMIC integration: Arm Cortex-M core, dual-channel 16-bit ΔΣ ADC analog front-end (AFE), Battery Management Systems (BMS/IBS), and ISO 26262 ASIL-C functional safety.",
                 "desc-test1": "Multi-stage test coverage optimization across Wafer Sort (CP), Final Test (FT), and System Level Test (SLT) with test-time reduction.",
                 "desc-test2": "Wafer map spatial defect clustering, Pareto 80/20 analysis, Poisson yield models, root cause analysis (RCA), and rapid yield ramp.",
+                "desc-dash1": "Executive sanity check and test parameter shift analyzer for semiconductor Test Program (TP) release: compares test log CSVs across revisions, detects Cat A/B/C shifts, and highlights Cpk < 1.67 risks.",
+                "desc-dash2": "Production lot-by-lot yield trend, bin distribution, and Statistical Bin Limit (SBL) hold rate analyzer: tracks abnormal lots, fail bin Pareto rankings, and production quality drift.",
+                "desc-dash3": "Client-side wafer defect map viewer & COHA analyzer: visualizes die-level and in-die defect spatial coordinates from CSV logs, with defect classification Pareto and defect PPM trend tracking.",
                 "desc-ai1": "Hands-on engineering playbook: Spec-Driven Development with Pydantic, LangGraph durable state machines, pgvector Hybrid RAG, and CI/CD evaluation gates.",
                 "desc-ai2": "Automated 10-K / 20-F annual reports crawler and parser for global tech & semiconductor titans, comparing CapEx/OpEx, R&D intensity, and gross margins.",
                 

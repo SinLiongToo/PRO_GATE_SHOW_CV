@@ -35,34 +35,46 @@ def run_verification():
 
         total_cards_zh = page.locator('article.portal-card').count()
         print(f"Total cards found: {total_cards_zh}")
-        assert total_cards_zh == 13, f"Expected 13 cards, got {total_cards_zh}"
+        assert total_cards_zh == 16, f"Expected 16 cards, got {total_cards_zh}"
 
         # 2. Click Language Toggle to English
         print("\n--- 2. Toggling Language to English ---")
         page.click("#langToggleBtn")
         page.wait_for_timeout(300)
 
-        # Verify English title in Yield, Financial, and MCU
+        # Verify English title in Yield, Financial, MCU, and new Category 03 Dashboards
         yield_title_en = page.locator('[data-i18n="title-test2"]').text_content().strip()
         test_title_en = page.locator('[data-i18n="title-test1"]').text_content().strip()
         financial_title_en = page.locator('[data-i18n="title-ai2"]').text_content().strip()
         mcu_title_en = page.locator('[data-i18n="title-dev6"]').text_content().strip()
+        dash1_title_en = page.locator('[data-i18n="title-dash1"]').text_content().strip()
+        dash2_title_en = page.locator('[data-i18n="title-dash2"]').text_content().strip()
+        dash3_title_en = page.locator('[data-i18n="title-dash3"]').text_content().strip()
         print(f"Yield Title (EN): {yield_title_en}")
         print(f"Test Title (EN): {test_title_en}")
         print(f"Financial Title (EN): {financial_title_en}")
         print(f"MCU Title (EN): {mcu_title_en}")
+        print(f"Dash 1 Title (EN): {dash1_title_en}")
+        print(f"Dash 2 Title (EN): {dash2_title_en}")
+        print(f"Dash 3 Title (EN): {dash3_title_en}")
 
         chinese_char_pattern = re.compile(r'[\u4e00-\u9fff]')
         assert not chinese_char_pattern.search(yield_title_en), f"Chinese in Yield EN: {yield_title_en}"
         assert not chinese_char_pattern.search(test_title_en), f"Chinese in Test EN: {test_title_en}"
         assert not chinese_char_pattern.search(financial_title_en), f"Chinese in Financial EN: {financial_title_en}"
         assert not chinese_char_pattern.search(mcu_title_en), f"Chinese in MCU EN: {mcu_title_en}"
+        assert not chinese_char_pattern.search(dash1_title_en), f"Chinese in Dash 1 EN: {dash1_title_en}"
+        assert not chinese_char_pattern.search(dash2_title_en), f"Chinese in Dash 2 EN: {dash2_title_en}"
+        assert not chinese_char_pattern.search(dash3_title_en), f"Chinese in Dash 3 EN: {dash3_title_en}"
         assert "Financial & OpEx" in financial_title_en, "Expected 'Financial & OpEx' in title"
         assert "MCU Notes" in mcu_title_en, "Expected 'MCU Notes' in title"
+        assert "CSV Parser" in dash1_title_en, "Expected 'CSV Parser' in title"
+        assert "SBL Hold Rate" in dash2_title_en, "Expected 'SBL Hold Rate' in title"
+        assert "CQC Defect Map" in dash3_title_en, "Expected 'CQC Defect Map' in title"
 
-        # Check all 13 card titles in EN
+        # Check all 16 card titles in EN
         titles = page.locator('article h3').all_text_contents()
-        print(f"\nAll 13 Card Titles in English:")
+        print(f"\nAll 16 Card Titles in English:")
         for idx, t in enumerate(titles, 1):
             t_clean = t.strip()
             has_chinese = bool(chinese_char_pattern.search(t_clean))
@@ -72,12 +84,12 @@ def run_verification():
         # Check result count badge in EN
         badge_en = page.locator("#resultCountBadge").text_content().strip()
         print(f"Badge in EN: {badge_en}")
-        assert "13 Items" in badge_en, f"Expected '13 Items' in badge, got {badge_en}"
+        assert "16 Items" in badge_en, f"Expected '16 Items' in badge, got {badge_en}"
 
         page.screenshot(path="playwright_en_verification.png", full_page=True)
 
-        # 3. Test Search / Find
-        print("\n--- 3. Testing Search (Find) Filter ---")
+        # 3. Test Search / Find & Category Filtering
+        print("\n--- 3. Testing Search & Category Filters ---")
         page.fill("#searchInput", "MCU")
         page.wait_for_timeout(300)
         visible_cards = page.locator('article:visible').count()
@@ -86,6 +98,27 @@ def run_verification():
 
         page.fill("#searchInput", "")
         page.wait_for_timeout(200)
+
+        # Test Category 03 Dashboards Filter
+        page.click('[data-filter="cat-dashboards"]')
+        page.wait_for_timeout(250)
+        dashboards_visible = page.locator('article:visible').count()
+        print(f"Filter 'cat-dashboards' -> visible cards: {dashboards_visible}")
+        assert dashboards_visible == 3, f"Expected 3 cards visible for 'cat-dashboards', got {dashboards_visible}"
+
+        # Test Category 04 AI Filter
+        page.click('[data-filter="cat-ai"]')
+        page.wait_for_timeout(250)
+        ai_visible = page.locator('article:visible').count()
+        print(f"Filter 'cat-ai' -> visible cards: {ai_visible}")
+        assert ai_visible == 2, f"Expected 2 cards visible for 'cat-ai', got {ai_visible}"
+
+        # Reset filter to all
+        page.click('[data-filter="all"]')
+        page.wait_for_timeout(200)
+        all_visible = page.locator('article:visible').count()
+        print(f"Filter 'all' -> visible cards: {all_visible}")
+        assert all_visible == 16, f"Expected 16 cards visible for 'all', got {all_visible}"
 
         # 4. Test Theme Toggle & Light Mode Contrast
         print("\n--- 4. Testing Theme Toggle & Light Mode Contrast ---")
@@ -119,7 +152,7 @@ def run_verification():
         assert "財務" in financial_title_zh_again
 
         browser.close()
-        print("\nALL 13 CARDS AND LIGHT MODE TESTS PASSED SUCCESSFULLY! ✅")
+        print("\nALL 16 CARDS, CATEGORY FILTERS, AND LIGHT MODE TESTS PASSED SUCCESSFULLY! ✅")
 
 if __name__ == '__main__':
     run_verification()
